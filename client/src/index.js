@@ -6,18 +6,22 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
+import { Provider } from 'react-redux';
+import store from './redux/Store';
 
 ReactDOM.render(
-  <Router>
-    <Routes>
-      <Route path='/' element={<App />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/register' element={<Register />} />
+  <Provider store={store}>
+    <Router>
+      <Routes>
+        <Route path='/' element={<App />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
 
 
 
-    </Routes>
-  </Router>,
+      </Routes>
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 

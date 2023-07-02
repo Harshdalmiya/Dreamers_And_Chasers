@@ -1,7 +1,8 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import { styled } from 'styled-components'
 import { mobile } from '../../Responsive'
+import { Link } from "react-router-dom";
 // import { handleLogin } from '../../sevices/authservice'
 const Container = styled.div`
 width:100vw;
@@ -48,6 +49,29 @@ cursor:pointer;
 `
 
 const Login = () => {
+    const [role, setRole] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+
+
+
+
+    const handleLoginClick = (e) => {
+        e.preventDefault();
+        const formData = {
+            role,
+            email,
+            password
+
+        };
+        if (role === '' || email === '' || password === '') {
+            return alert("Provide the field")
+
+        }
+        console.log(formData)
+
+    }
+
     return (
 
 
@@ -55,15 +79,75 @@ const Login = () => {
             <Wrapper>
                 <Tcontainer>
                     <Mcontainer>LOGIN</Mcontainer>
+
                 </Tcontainer>
+                <div className="d-flex mb-3">
+
+                    <div class="form-check">
+                        <input
+                            class="form-check-input"
+                            type="radio"
+                            name="role"
+                            id="Admin"
+                            value={"admin"}
+                            onChange={(e) => setRole(e.target.value)}
+                        />
+                        <label class="form-check-label" htmlFor="donarRadio">Admin</label>
+                    </div>
+                    <div class="form-check ms-2">
+                        <input
+                            class="form-check-input"
+                            type="radio"
+                            name="role"
+                            id="Donor"
+                            value={"donor"}
+                            onChange={(e) => setRole(e.target.value)}
+                        />
+                        <label class="form-check-label" htmlFor="donarRadio">Donor</label>
+                    </div>
+                    <div class="form-check ms-2">
+                        <input
+                            class="form-check-input"
+                            type="radio"
+                            name="role"
+                            id="Hospital"
+                            value={"hospital"}
+                            onChange={(e) => setRole(e.target.value)}
+                        />
+                        <label class="form-check-label" htmlFor="HospitalRadio">Hospital</label>
+                    </div>
+                    <div class="form-check ms-2">
+                        <input
+                            class="form-check-input"
+                            type="radio"
+                            name="role"
+                            id="Organization"
+                            value={"organization"}
+                            onChange={(e) => setRole(e.target.value)}
+                        />
+                        <label class="form-check-label" htmlFor="OrganizationRadio">Organization</label>
+                    </div>
+
+
+                </div>
 
 
                 <Form>
-                    <Input placeholder='Email Adress' />
-                    <Input placeholder='Password' />
+                    <Input placeholder="email"
+                        labelFor={"forName"}
+                        inputType={"text"}
+                        name={"email"}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)} />
+                    <Input placeholder='Password'
+                        labelFor={"forName"}
+                        inputType={"text"}
+                        name={"password"}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)} />
 
-                    <Des>By creating an account,I consent to processing my personal data in accordance with the <b>PRIVACY POLICY</b></Des>
-                    <Button>LOGIN</Button>
+                    <Des>Not yet Registerd Please<Link to='/register'> REGISTER</Link></Des>
+                    <Button onClick={handleLoginClick}>LOGIN</Button>
                 </Form>
 
 

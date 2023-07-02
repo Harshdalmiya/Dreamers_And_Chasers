@@ -14,35 +14,30 @@
 // //     }
 // // };
 
-// export const handleRegister = (
-//     e,
-//     userName,
-//     role,
-//     email,
-//     password,
-//     phone,
-//     organizationName,
-//     address,
-//     hospitalName,
+export const handleRegister = (
+    e,
+    userName,
+    role,
+    email,
+    password,
+    phone,
+    organizationName,
+    address,
+    hospitalName,
+    props
 
-// ) => {
-//     e.preventDefault();
-//     try {
-//         // store.dispatch(
-//         //     userRegister({
-//         //         userName,
-//         //         role,
-//         //         email,
-//         //         password,
-//         //         phone,
-//         //         organizationName,
-//         //         address,
-//         //         hospitalName,
-
-//         //     })
-//         // );
-//         console.log("ebnsnxkl");
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
+) => {
+    e.preventDefault();
+    try {
+        console.log("Register=>", { userName },
+            { role },
+            { email },
+            { password },
+            { phone },
+            { organizationName },
+            { address },
+            { hospitalName });
+    } catch (error) {
+        console.log(error);
+    }
+};

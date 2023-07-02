@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { styled } from 'styled-components'
 import { mobile } from '../../Responsive'
 import { Link } from "react-router-dom";
+import { handleRegister } from '../../sevices/authservice';
 
 const Container = styled.div`
 width:100vw;
@@ -42,132 +43,152 @@ background-color:black;
 color:white;
 cursor:pointer;
 `
-
 const Register = () => {
-    const [role, setRole] = useState("role");
-    const [password, setPassword] = useState("password");
-    const [email, setEmail] = useState("email");
-    const [userName, setUserName] = useState("Username");
-    const [organizationName, setOrganizationName] = useState("Organization name");
-    const [hospitalName, setHospitalName] = useState("Hospital name");
-    const [address, setAddress] = useState("Address");
-    const [phone, setPhone] = useState("Phone");
+    const [role, setRole] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [userName, setUserName] = useState("");
+    const [organizationName, setOrganizationName] = useState("");
+    const [hospitalName, setHospitalName] = useState("");
+    const [address, setAddress] = useState("");
+    const [phone, setPhone] = useState("");
 
+
+
+    const handleRegisterClick = (e) => {
+        e.preventDefault();
+        const formData = {
+            userName,
+            role,
+            email,
+            password,
+            phone,
+            organizationName,
+            address,
+            hospitalName
+        };
+        console.log(formData)
+
+    }
 
 
     return (
-        <Container>
-            <Wrapper>
+        <div>
 
-                <Title>CREATE AN ACCOUNT</Title>
+            <Container>
+                <Wrapper>
 
-                <div className="d-flex mb-3">
+                    <Title>CREATE AN ACCOUNT</Title>
 
-                    <div class="form-check">
-                        <input
-                            class="form-check-input"
-                            type="radio"
-                            name="role"
-                            id="Admin"
-                            value={"admin"}
-                            onChange={(e) => setRole(e.target.value)}
-                        />
-                        <label class="form-check-label" htmlFor="donarRadio">Admin</label>
+                    <div className="d-flex mb-3">
+
+                        <div class="form-check">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="role"
+                                id="Admin"
+                                value={"admin"}
+                                onChange={(e) => setRole(e.target.value)}
+                            />
+                            <label class="form-check-label" htmlFor="donarRadio">Admin</label>
+                        </div>
+                        <div class="form-check ms-2">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="role"
+                                id="Donor"
+                                value={"donor"}
+                                onChange={(e) => setRole(e.target.value)}
+                            />
+                            <label class="form-check-label" htmlFor="donarRadio">Donor</label>
+                        </div>
+                        <div class="form-check ms-2">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="role"
+                                id="Hospital"
+                                value={"hospital"}
+                                onChange={(e) => setRole(e.target.value)}
+                            />
+                            <label class="form-check-label" htmlFor="HospitalRadio">Hospital</label>
+                        </div>
+                        <div class="form-check ms-2">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="role"
+                                id="Organization"
+                                value={"organization"}
+                                onChange={(e) => setRole(e.target.value)}
+                            />
+                            <label class="form-check-label" htmlFor="OrganizationRadio">Organization</label>
+                        </div>
+
+
                     </div>
-                    <div class="form-check ms-2">
-                        <input
-                            class="form-check-input"
-                            type="radio"
-                            name="role"
-                            id="Donor"
-                            value={"donor"}
-                            onChange={(e) => setRole(e.target.value)}
-                        />
-                        <label class="form-check-label" htmlFor="donarRadio">Donor</label>
-                    </div>
-                    <div class="form-check ms-2">
-                        <input
-                            class="form-check-input"
-                            type="radio"
-                            name="role"
-                            id="Hospital"
-                            value={"hospital"}
-                            onChange={(e) => setRole(e.target.value)}
-                        />
-                        <label class="form-check-label" htmlFor="HospitalRadio">Hospital</label>
-                    </div>
-                    <div class="form-check ms-2">
-                        <input
-                            class="form-check-input"
-                            type="radio"
-                            name="role"
-                            id="Organization"
-                            value={"organization"}
-                            onChange={(e) => setRole(e.target.value)}
-                        />
-                        <label class="form-check-label" htmlFor="OrganizationRadio">Organization</label>
-                    </div>
+                    <Form>
+                        {(role === "admin" || role === "donor") && (
+                            <Input placeholder="userName"
+                                labelFor={"forName"}
+                                inputType={"text"}
+                                name={"userName"}
+                                value={userName}
+                                onChange={(e) => setUserName(e.target.value)} />
+                        )}
+                        {(role === "organization") && (
+                            <Input placeholder="OrganizationName"
+                                labelFor={"forName"}
+                                inputType={"text"}
+                                name={"NameOrganization"}
+                                value={organizationName}
+                                onChange={(e) => setOrganizationName(e.target.value)} />
+                        )}
+                        {(role === "hospital") && (
+                            <Input placeholder="HospitalName"
+                                labelFor={"forName"}
+                                inputType={"text"}
+                                name={"Name"}
+                                value={hospitalName}
+                                onChange={(e) => setHospitalName(e.target.value)} />
 
+                        )}
 
-                </div>
-                <Form>
-                    {(role === "admin" || role === "donor") && (
-                        <Input placeholder={userName}
+                        <Input placeholder="email"
                             labelFor={"forName"}
                             inputType={"text"}
-                            name={"userName"}
-                            value={userName}
-                            onChange={(e) => setUserName(e.target.value)} />
-                    )}
-                    {(role === "organization") && (
-                        <Input placeholder={organizationName}
+                            name={"email"}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)} />
+
+
+
+                        <Input placeholder="Address"
                             labelFor={"forName"}
                             inputType={"text"}
-                            name={"NameOrganization"}
-                            value={organizationName}
-                            onChange={(e) => setOrganizationName(e.target.value)} />
-                    )}
-                    {(role === "hospital") && (
-                        <Input placeholder={hospitalName}
+                            name={"Address"}
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)} />
+
+                        <Input placeholder="Phone"
                             labelFor={"forName"}
                             inputType={"text"}
                             name={"Name"}
-                            value={hospitalName}
-                            onChange={(e) => setHospitalName(e.target.value)} />
-
-                    )}
-
-                    <Input placeholder={email}
-                        labelFor={"forName"}
-                        inputType={"text"}
-                        name={"email"}
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)} />
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)} />
+                        <Des>By creating an account,I consent to processing my personal data in accordance with the <b>PRIVACY POLICY</b></Des>
+                        <Des>Already registered user please<Link to='/login'>LOGIN</Link></Des>
+                        <Button onClick={handleRegisterClick}>CREATE</Button>
+                    </Form>
 
 
+                </Wrapper>
 
-                    <Input placeholder={address}
-                        labelFor={"forName"}
-                        inputType={"text"}
-                        name={"Address"}
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)} />
+            </Container>
+        </div>
 
-                    <Input placeholder={phone}
-                        labelFor={"forName"}
-                        inputType={"text"}
-                        name={"Name"}
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)} />
-                    <Des>By creating an account,I consent to processing my personal data in accordance with the <b>PRIVACY POLICY</b></Des>
-                    <Des>Already registered user please<Link to='/login'>LOGIN</Link></Des>
-                    <Button>CREATE</Button>
-                </Form>
-
-
-            </Wrapper>
-
-        </Container>
     )
 }
 
