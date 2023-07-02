@@ -3,6 +3,8 @@ import { styled } from 'styled-components'
 import { mobile } from '../../Responsive'
 import { Link } from "react-router-dom";
 import { handleRegister } from '../../sevices/authservice';
+import store from '../../redux/Store';
+import { userRegister } from '../../redux/features/auth/AuthAction';
 
 const Container = styled.div`
 width:100vw;
@@ -57,18 +59,22 @@ const Register = () => {
 
     const handleRegisterClick = (e) => {
         e.preventDefault();
-        const formData = {
-            userName,
-            role,
-            email,
-            password,
-            phone,
-            organizationName,
-            address,
-            hospitalName
-        };
-        console.log(formData)
-
+        try {
+            const formData = {
+                userName,
+                role,
+                email,
+                password,
+                phone,
+                organizationName,
+                address,
+                hospitalName
+            };
+            store.dispatch(userRegister(formData))
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 
 

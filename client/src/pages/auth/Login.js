@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import { styled } from 'styled-components'
 import { mobile } from '../../Responsive'
 import { Link } from "react-router-dom";
+import { userLogin } from '../../redux/features/auth/AuthAction';
+import store from '../../redux/Store';
+
 // import { handleLogin } from '../../sevices/authservice'
 const Container = styled.div`
 width:100vw;
@@ -58,18 +61,22 @@ const Login = () => {
 
     const handleLoginClick = (e) => {
         e.preventDefault();
-        const formData = {
-            role,
-            email,
-            password
+        try {
+            const formData = {
+                role,
+                email,
+                password
 
-        };
-        if (role === '' || email === '' || password === '') {
-            return alert("Provide the field")
+            };
+            if (role === '' || email === '' || password === '') {
+                return alert("Provide the field")
 
+            }
+            store.dispatch(userLogin(formData))
         }
-        console.log(formData)
-
+        catch (error) {
+            console.log(error)
+        }
     }
 
     return (

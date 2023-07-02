@@ -26,7 +26,7 @@ app.use('/api/v1/blood', require("./routes/bloodRoute"));
 
 
 //port name
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 7000;
 
 
 
