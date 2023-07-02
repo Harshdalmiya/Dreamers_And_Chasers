@@ -22,7 +22,7 @@ const Modal = () => {
             }
             const { data } = await API.post("/blood/bloodStatus", {
                 email,
-                organization: user?._id,
+                organisation: user?._id,
                 bloodStatus,
                 bloodGroupType,
                 bloodQuantity

@@ -23,7 +23,7 @@ const authSlice = createSlice({
         //for successful login
         builder.addCase(userLogin.fulfilled, (state, { payload }) => {
             state.loading = false;
-            state.olduser = payload.olduser;
+            state.user = payload.user;
             state.token = payload.token
         })
         //for rejection
@@ -41,7 +41,7 @@ const authSlice = createSlice({
         //for successful login
         builder.addCase(userRegister.fulfilled, (state, { payload }) => {
             state.loading = false;
-            state.olduser = payload.olduser;
+            state.user = payload.user;
 
         })
         //for rrejection
@@ -59,7 +59,7 @@ const authSlice = createSlice({
         //for successful login
         builder.addCase(getCurrentUser.fulfilled, (state, { payload }) => {
             state.loading = false;
-            state.olduser = payload.olduser;
+            state.user = payload.user;
 
         })
         //for rejection

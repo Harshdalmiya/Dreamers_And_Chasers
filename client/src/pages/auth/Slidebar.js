@@ -16,7 +16,7 @@ const Sidebar = () => {
         <div>
             <div className="sidebar">
                 <div className="menu">
-                    {user?.role === "organization" && (
+                    {user?.role === "organisation" && (
                         <>
                             <div
                                 className={`menu-item ${location.pathname === "/" && "active"}`}
@@ -29,7 +29,7 @@ const Sidebar = () => {
                                     }`}
                             >
                                 <i className="fa-solid fa-hand-holding-medical"></i>
-                                <Link to="/donar">Donar</Link>
+                                <Link to="/donor">Donor</Link>
                             </div>
                             <div
                                 className={`menu-item ${location.pathname === "/hospital" && "active"

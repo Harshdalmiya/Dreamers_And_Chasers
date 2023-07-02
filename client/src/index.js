@@ -9,6 +9,9 @@ import Login from './pages/auth/Login';
 import { Provider } from 'react-redux';
 import store from './redux/Store';
 import PublicRoute from './components/Routes/PublicRoute';
+import PrivateRoute from './components/Routes/PrivateRoute';
+
+import Donor from './pages/Dashboard/Donor';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -20,6 +23,7 @@ ReactDOM.render(
 
 
         <Route path='/register' element={<PublicRoute><Register /></PublicRoute>} />
+        <Route path='/donor' element={<PrivateRoute><Donor /></PrivateRoute>} />
 
 
 

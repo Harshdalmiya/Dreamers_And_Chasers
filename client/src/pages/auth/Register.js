@@ -50,7 +50,7 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [userName, setUserName] = useState("");
-    const [organizationName, setOrganizationName] = useState("");
+    const [organisationName, setorganisationName] = useState("");
     const [hospitalName, setHospitalName] = useState("");
     const [address, setAddress] = useState("");
     const [phone, setPhone] = useState("");
@@ -66,7 +66,7 @@ const Register = () => {
                 email,
                 password,
                 phone,
-                organizationName,
+                organisationName,
                 address,
                 hospitalName
             };
@@ -126,11 +126,11 @@ const Register = () => {
                                 class="form-check-input"
                                 type="radio"
                                 name="role"
-                                id="Organization"
-                                value={"organization"}
+                                id="organisation"
+                                value={"organisation"}
                                 onChange={(e) => setRole(e.target.value)}
                             />
-                            <label class="form-check-label" htmlFor="OrganizationRadio">Organization</label>
+                            <label class="form-check-label" htmlFor="organisationRadio">organisation</label>
                         </div>
 
 
@@ -144,13 +144,13 @@ const Register = () => {
                                 value={userName}
                                 onChange={(e) => setUserName(e.target.value)} />
                         )}
-                        {(role === "organization") && (
-                            <Input placeholder="OrganizationName"
+                        {(role === "organisation") && (
+                            <Input placeholder="organisationName"
                                 labelFor={"forName"}
                                 inputType={"text"}
-                                name={"NameOrganization"}
-                                value={organizationName}
-                                onChange={(e) => setOrganizationName(e.target.value)} />
+                                name={"Nameorganisation"}
+                                value={organisationName}
+                                onChange={(e) => setorganisationName(e.target.value)} />
                         )}
                         {(role === "hospital") && (
                             <Input placeholder="HospitalName"

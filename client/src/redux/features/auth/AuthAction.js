@@ -46,7 +46,7 @@ export const userRegister = createAsyncThunk(
         email,
         password,
         phone,
-        organizationName,
+        organisationName,
         address,
         hospitalName
     }, { rejectWithValue }) => {
@@ -57,7 +57,7 @@ export const userRegister = createAsyncThunk(
                 email,
                 password,
                 phone,
-                organizationName,
+                organisationName,
                 address,
                 hospitalName
             })

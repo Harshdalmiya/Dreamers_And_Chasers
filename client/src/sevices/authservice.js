@@ -21,7 +21,7 @@ export const handleRegister = (
     email,
     password,
     phone,
-    organizationName,
+    organisationName,
     address,
     hospitalName,
     props
@@ -34,7 +34,7 @@ export const handleRegister = (
             { email },
             { password },
             { phone },
-            { organizationName },
+            { organisationName },
             { address },
             { hospitalName });
     } catch (error) {

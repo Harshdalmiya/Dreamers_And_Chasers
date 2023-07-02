@@ -7,17 +7,18 @@ import moment from "moment";
 import API from "../../sevices/api";
 
 const HomePage = () => {
-    const { loading, error, user } = useSelector((state) => state.auth);
+    const { error, user } = useSelector((state) => state.auth);
     const [data, setData] = useState([]);
     const navigate = useNavigate();
 
     //get function
     const getBloodRecords = async () => {
         try {
-            const { data } = await API.get("/blood/bloodStatus");
+            const { data } = await API.get("/blood/bloodHistory");
             if (data?.success) {
-                setData(data?.bloodStatus);
-                // console.log(data);
+                setData(data?.inventory);
+                console.log(data)
+
             }
         } catch (error) {
             console.log(error);
@@ -31,7 +32,7 @@ const HomePage = () => {
         <Home>
             {user?.role === "admin" && navigate("/admin")}
             {error && <span>{alert(error)}</span>}
-            : (
+
             <>
                 <div className="container">
                     <h4
@@ -49,29 +50,50 @@ const HomePage = () => {
                                 <th scope="col">Blood Group</th>
                                 <th scope="col">Blood Type</th>
                                 <th scope="col">Quantity</th>
-                                <th scope="col">Donar Email</th>
-                                <th scope="col">TIme & Date</th>
+                                <th scope="col">Email</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            {data?.map((record) => (
-                                <tr key={record._id}>
-                                    <td>{record.bloodStatus}</td>
-                                    <td>{record.bloodGroupType}</td>
-                                    <td>{record.bloodQuantity} (ML)</td>
-                                    <td>{record.email}</td>
-                                    <td>
-                                        {moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}
-                                    </td>
-                                </tr>
-                            ))}
+
+                            <tr>
+                                <td>A+</td>
+                                <td>in</td>
+                                <td>20 (ML)</td>
+                                <td>renu@gmail.com</td>
+
+                            </tr>
+
                         </tbody>
+                        <tbody>
+
+                            <tr>
+                                <td>B+</td>
+                                <td>in</td>
+                                <td>30 (ML)</td>
+                                <td>harsh@gmail.com</td>
+
+                            </tr>
+
+                        </tbody>
+                        <tbody>
+
+                            <tr>
+                                <td>0-</td>
+                                <td>in</td>
+                                <td>50 (ML)</td>
+                                <td>shreya@gmail.com</td>
+
+                            </tr>
+
+                        </tbody>
+
                     </table>
 
                     <Modal />
                 </div>
             </>
-            )
+
         </Home>
     );
 };

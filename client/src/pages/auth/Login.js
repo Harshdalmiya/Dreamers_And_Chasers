@@ -128,11 +128,11 @@ const Login = () => {
                             class="form-check-input"
                             type="radio"
                             name="role"
-                            id="Organization"
-                            value={"organization"}
+                            id="organisation"
+                            value={"organisation"}
                             onChange={(e) => setRole(e.target.value)}
                         />
-                        <label class="form-check-label" htmlFor="OrganizationRadio">Organization</label>
+                        <label class="form-check-label" htmlFor="organisationRadio">organisation</label>
                     </div>
 
 

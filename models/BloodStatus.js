@@ -23,14 +23,15 @@ const bloodStatusSchema = new mongoose.Schema({
         required: [true, "Donor Email is required"],
 
     },
-    organization: {
+    organisation: {
         type: String,
-        required: [false, 'Organization required'],
-        ref: "users"
+        ref: "users",
+        required: [false, 'organisation required']
+
 
     },
     hospital: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: function () {
             return this.bloodStatus === 'out'
         },
@@ -38,11 +39,11 @@ const bloodStatusSchema = new mongoose.Schema({
 
     },
     donor: {
-        type: String,
-        ref: "users"
-        // required: function () {
-        //     return this.bloodStatus === 'in'
-        // },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "users",
+        required: function () {
+            return this.bloodStatus === 'in'
+        },
 
 
     }
