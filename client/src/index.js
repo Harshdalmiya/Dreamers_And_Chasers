@@ -8,14 +8,20 @@ import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
 import { Provider } from 'react-redux';
 import store from './redux/Store';
+import PublicRoute from './components/Routes/PublicRoute';
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Routes>
         <Route path='/' element={<App />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
+
+        <Route path='/login' element={<PublicRoute><Login /></PublicRoute>} />
+
+
+        <Route path='/register' element={<PublicRoute><Register /></PublicRoute>} />
+
+
 
 
 
