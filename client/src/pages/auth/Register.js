@@ -169,6 +169,14 @@ const Register = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)} />
 
+                        <Input placeholder="password"
+                            labelFor={"forName"}
+                            inputType={"text"}
+                            name={"email"}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)} />
+
+
 
 
                         <Input placeholder="Address"

@@ -1,6 +1,8 @@
 import React from 'react'
 import Navbar from './Navbar'
 import Sidebar from './Slidebar'
+import HomePage from './SemiHomePage'
+
 
 const Home = ({ children }) => {
     return (
