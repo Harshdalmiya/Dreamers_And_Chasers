@@ -2,10 +2,10 @@
   "name": "dreamers-and-chasers",
   "version": "1.0.0",
   "description": "blood donation bank",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "nodemon index.js"
+    "serve": "nodemon server.js"
   },
   "author": "shreya and harsh",
   "license": "ISC",
